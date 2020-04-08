@@ -1,5 +1,6 @@
 from collections import namedtuple
 from operator import attrgetter
+from operator import methodcaller
 
 metro_data = [
     ('Tokyo', 'JP', 36.933, (35.689722, 139.691667)),   # <1>
@@ -18,6 +19,13 @@ print(metro_areas[0].coord.lat)
 name_lat = attrgetter('name', 'coord.lat')
 for city in sorted(metro_areas, key=attrgetter('coord.lat')):
     print(name_lat(city))
+
+s = 'The time has come'
+upcase = methodcaller('upper')
+print(upcase(s))
+hyp = methodcaller('replace', ' ', '-')
+print(hyp(s))
+
 
 
 
